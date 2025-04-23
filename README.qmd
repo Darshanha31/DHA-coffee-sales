@@ -1,29 +1,27 @@
-# Coffee sales data
+---
+title: Coffee sales data
+jupyter: python3
+format: gfm
 
+---
 
-This repository generates sales data for a fictitious coffee device
-store.
+This repository generates sales data for a fictitious coffee device store.
 
 Here are some useful pieces:
 
-- [example_notebook.ipynb](./example_notebook.ipynb): jupyter notebook
-  example.
-- [README.qmd](./README.qmd): the [quarto](https://quarto.org) document
-  which generated this page.
-- [Great Tables](https://github.com/posit-dev/great-tables): python
-  library making the beautiful tables.
+* [example_notebook.ipynb](./example_notebook.ipynb): jupyter notebook example.
+* [README.qmd](./README.qmd): the [quarto](https://quarto.org) document which generated this page.
+* [Great Tables](https://github.com/posit-dev/great-tables): python library making the beautiful tables.
 
 ## What can I do with it?
 
-This repo is used to generate this table for the Great Tables examples
-gallery (scroll down for code):
+This repo is used to generate this table for the Great Tables examples gallery (scroll down for code):
 
-![An image of a Great Table output, which is an HTML table. Each row is
-a coffee product](./data/coffee-table.png)
+![An image of a Great Table output, which is an HTML table. Each row is a coffee product](./data/coffee-table.png)
 
 ## Code for table
 
-``` python
+```{python}
 import polars as pl
 import polars.selectors as cs
 from great_tables import GT, loc, style
@@ -31,7 +29,10 @@ from great_tables import GT, loc, style
 coffee_sales = pl.read_ndjson("data/coffee-sales.ndjson")
 ```
 
-``` python
+
+```{python}
+#| output: false
+
 sel_rev = cs.starts_with("revenue")
 sel_prof = cs.starts_with("profit")
 
@@ -79,12 +80,11 @@ coffee_table = (
 coffee_table.save("data/coffee-table.png",  scale=2)
 ```
 
-See this [example_notebook.ipynb](./example_notebook.ipynb) for this
-code in jupyter notebook form.
+See this [example_notebook.ipynb](./example_notebook.ipynb) for this code in jupyter notebook form.
 
 ## Regenerating data and README
 
-``` bash
+```bash
 # generate data ----
 python 1-generate.py
 
